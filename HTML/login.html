@@ -1,0 +1,58 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Login</title>
+
+</head>
+
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit" onclick="submitForm()">Login</button>
+        </form>
+        <div id="errorMessage" class="error-message"></div>
+    </div>
+    <script>
+        // scripts/login.js
+        function submitForm() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            console.log(username, password)
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+            })
+                .then(response => response.text())
+                .then(data => {
+                    if (data === 'Welcome to the dashboard!') {
+                        window.location.href = '/dashbord';
+                        // Redirect to the dashboard page
+                    } else {
+                        document.getElementById('errorMessage').innerText = data;
+                    }
+                })
+
+        }
+    </script>
+
+</body>
+
+</html>
