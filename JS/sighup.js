@@ -17,8 +17,27 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+    const { name, email, password, number } = req.body;
 
-    res.json({ value: true });
+
+    const sql = "INSERT INTO data_setting(name ,email,password,number) VALUES ?";
+    const data = [
+        [
+            name,
+            email,
+            password,
+            number
+        ]
+    ];
+    db.query(sql, [data], function (err, results) {
+        if (err) {
+            console.log("Error");
+            res.status(500);
+        } else {
+            console.log("Data is Stored");
+            res.json({ value: true });
+        }
+    });
 });
 
 
