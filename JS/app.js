@@ -3,12 +3,13 @@ const app = express();
 const cors = require("cors");
 const path = require("path");
 const bodyParser = require('body-parser');
+app.set('view engine', 'ejs');
 
 const loginRouter = require('./login');
 const welcomeRouter = require('./welcome');
 const dashbords = require('./dashbord');
 const signup = require("./sighup");
-
+const record = require("./record")
 
 
 app.use(cors());
@@ -25,6 +26,7 @@ app.use('/dashbord', dashbords);
 
 app.use('/signup', signup);
 
+app.use('/record', record);
 
 
 app.listen(port, () => {

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin portal</title>
+</head>
+
+<body>
+    <h1>All Records Of Users</h1>
+    <table border="1" width="100%">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>E-Mail</th>
+            <th>Password</th>
+            <th>Number</th>
+        </tr>
+        <% if(db_data.length>0){ %>
+            <% for(let i=0 ;i<db_data.length ;i++){%>
+                <tr>
+
+                    <td> <%- db_data[i].id %></td>
+                    <td><%- db_data[i].name %></td>
+                    <td><%- db_data[i].email %></td>
+                    <td><%- db_data[i].password %></td>
+                    <td><%- db_data[i].number %></td>
+
+                </tr>
+
+                <% }%>
+
+                    <% } else { %>
+                        <h1>Records are Empty</h1>
+                        <% } %>
+    </table>
+</body>
+
+</html>
