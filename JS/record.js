@@ -15,5 +15,19 @@ router.get('/', (req, res) => {
         if (error) console.log(error);
         res.render(path.join(__dirname, 'records.ejs'), { db_data: values })
     })
-})
+});
+
+
+router.get('/delete', (req, res) => {
+    const del_id = req.query.id;
+    console.log(del_id);
+    db.query(`delete from data_setting where id = ${del_id}`, (error, result) => {
+        if (error) console.log(error);
+
+    })
+
+    res.redirect('/record');
+
+});
+
 module.exports = router;
