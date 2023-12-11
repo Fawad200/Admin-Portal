@@ -43,7 +43,7 @@
                 .then(response => response.text())
                 .then(data => {
                     if (data === 'Welcome to the dashboard!') {
-                        window.location.href = '/dashbord';
+                        window.location.href = '/record';
                         // Redirect to the dashboard page
                     } else {
                         document.getElementById('errorMessage').innerText = data;

@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
     const { username, password } = req.body;
 
 
-    db.query(` SELECT name,password FROM data_setting WHERE  AND name = '${username}' AND password = '${password}'`, (err, results) => {
+    db.query(` SELECT name,password FROM data_setting WHERE   name = '${username}' AND password = '${password}'`, (err, results) => {
         if (err) {
             console.error('Error executing query:', err);
             res.status(500).send('Internal Server Error');
