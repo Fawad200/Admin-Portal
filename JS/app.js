@@ -3,13 +3,23 @@ const app = express();
 const cors = require("cors");
 const path = require("path");
 const bodyParser = require('body-parser');
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+const session = require('express-session');
 
 const loginRouter = require('./login');
 const welcomeRouter = require('./welcome');
 const dashbords = require('./dashbord');
 const signup = require("./sighup");
 const record = require("./record")
+
+
+app.use(session({
+    secret: 'top_hidden',
+    resave: false,
+    saveUninitialized: true
+}));
 
 
 app.use(cors());
@@ -27,6 +37,9 @@ app.use('/dashbord', dashbords);
 app.use('/signup', signup);
 
 app.use('/record', record);
+
+
+
 
 
 app.listen(port, () => {

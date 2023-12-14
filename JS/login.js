@@ -26,6 +26,8 @@ router.post('/', (req, res) => {
         }
 
         if (results.length > 0) {
+            req.session.isAuthenticated = true;
+            // res.redirect('/record');
             res.send('Welcome to the dashboard!');
         } else {
             res.status(401).send('Invalid username or password');

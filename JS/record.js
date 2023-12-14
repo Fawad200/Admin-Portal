@@ -4,11 +4,16 @@ const db = require("./db");
 const path = require('path');
 const { error } = require('console');
 
-// router.get('/', (req, res) => {
-//     db.query(`Select * FROM data_setting`, (error, db_data) => {
-//         res.render(path.join(__dirname, "records.ejs"))
-//     })
-// });
+// Authentication middleware
+router.use((req, res, next) => {
+    console.log('Auth Middleware:', req.session.isAuthenticated);
+    if (req.session.isAuthenticated) {
+        next(); // User is authenticated, proceed to the next middleware or route handler
+    } else {
+        console.log('Redirecting to login...');
+        res.redirect('/login'); // Redirect to the login page if not authenticated
+    }
+});
 
 router.get('/', (req, res) => {
     db.query(`SELECT * FROM data_setting`, (error, values) => {
