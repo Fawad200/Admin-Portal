@@ -14,6 +14,19 @@ router.use((req, res, next) => {
         res.redirect('/login'); // Redirect to the login page if not authenticated
     }
 });
+// Logout route
+router.get('/logout', (req, res) => {
+    // Destroy the session
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Error destroying session:', err);
+        } else {
+            // Redirect to the login page after logout
+            res.redirect('/login');
+        }
+    });
+});
+
 
 router.get('/', (req, res) => {
     db.query(`SELECT * FROM data_setting`, (error, values) => {
@@ -34,5 +47,6 @@ router.get('/delete', (req, res) => {
     res.redirect('/record');
 
 });
+
 
 module.exports = router;
