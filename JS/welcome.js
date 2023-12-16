@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path')
 
 // Homepage route
 router.get('/', (req, res) => {
 
-    res.send('Welcome to the homepage!');
+    res.sendFile(path.join(__dirname, '../HTML/Welcome.html'));
 
 });
 
