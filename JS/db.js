@@ -5,6 +5,7 @@ const db = mysql.createConnection({
     user: 'root',
     password: 'root',
     database: 'data_mang',
+    // authPlugin: 'mysql_native_password', // Add this line
 });
 
 db.connect((err) => {

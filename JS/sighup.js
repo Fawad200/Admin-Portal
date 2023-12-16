@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
     const { name, email, password, number } = req.body;
 
 
-    const sql = "INSERT INTO data_setting(name ,email,password,number) VALUES ?";
+    const sql = "INSERT INTO data_setting(name ,E_mail,password,number) VALUES ?";
     const data = [
         [
             name,
