@@ -42,6 +42,7 @@
                     <td>
                     <td>
                         <a class="del" href="#" onclick="confirmAndDelete('<%- db_data[i].id %>')">Delete</a>
+                        <a href="/update?id=<%- db_data[i].id%>">Update </a>
                     </td>
 
                     </td>
@@ -54,6 +55,7 @@
                         <h1>Records are Empty</h1>
                         <% } %>
                             <a class="logout" href="/record/logout"> logout</a>
+
     </table>
     <script>
         function confirmAndDelete(recordId) {

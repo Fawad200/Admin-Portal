@@ -1,0 +1,30 @@
+<head>
+    <title>Admin Update portal</title>
+    <link rel="stylesheet" href="update.css">
+</head>
+
+<div class="name">
+    <div class="a">Update Record</div>
+</div>
+<div class="form">
+    <input type="hidden" name="id" value="<%= disdata[0].id %>">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="<%= disdata[0].name %>">
+    </div>
+    <div class="form-group">
+        <label for="email">E-Mail</label>
+        <input type="email" name="email" id="email" value="<%= disdata[0].E_mail %>">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="text" name="password" id="password" value="<%= disdata[0].password %>">
+    </div>
+    <div class="form-group">
+        <label for="number">Number</label>
+        <input type="number" name="number" id="number" value="<%= disdata[0].number %>">
+    </div>
+    <div class="form-group">
+        <button class="uprec" type="submit" value="submit">Update</button>
+    </div>
+</div>

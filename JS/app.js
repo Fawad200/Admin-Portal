@@ -12,7 +12,8 @@ const loginRouter = require('./login');
 const welcomeRouter = require('./welcome');
 const dashbords = require('./dashbord');
 const signup = require("./sighup");
-const record = require("./record")
+const record = require("./record");
+const rec_up = require('./rec_update');
 
 
 app.use(session({
@@ -37,6 +38,8 @@ app.use('/dashbord', dashbords);
 app.use('/signup', signup);
 
 app.use('/record', record);
+
+app.use('/update', rec_up)
 
 
 
