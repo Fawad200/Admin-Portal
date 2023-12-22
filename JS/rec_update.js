@@ -27,7 +27,7 @@ route.get('/', (req, res) => {
 
         db.query(sqldt, [vals], function (error, result) {
             if (error) console.log(error);
-            res.render('../Ejs/update_rec', { disdata: result });
+            res.render('../../Ejs/update_rec', { disdata: result });
 
         });
 

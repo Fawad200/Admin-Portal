@@ -31,7 +31,7 @@ router.get('/logout', (req, res) => {
 router.get('/', (req, res) => {
     db.query(`SELECT * FROM data_setting`, (error, values) => {
         if (error) console.log(error);
-        res.render('../Ejs/records.ejs', { db_data: values })
+        res.render('../../Ejs/records.ejs', { db_data: values })
     })
 });
 
