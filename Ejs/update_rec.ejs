@@ -25,6 +25,38 @@
         <input type="number" name="number" id="number" value="<%= disdata[0].number %>">
     </div>
     <div class="form-group">
-        <button class="uprec" type="submit" value="submit">Update</button>
+        <button class="uprec" onclick="submit()" type="submit" value="submit">Update</button>
     </div>
 </div>
+<script>
+    function submit() {
+
+        let id = document.getElementsByName("id")[0].value;
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+        let number = document.getElementById("number").value;
+
+        fetch('/update/up_rec', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                id: id,
+                name: name,
+                email: email,
+                password: password,
+                number: number
+            })
+        })
+            .then(response => response)
+            .then(response => {
+                window.location.href = '/record'
+            })
+
+
+    }
+
+
+</script>

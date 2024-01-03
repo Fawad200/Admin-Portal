@@ -16,10 +16,12 @@ route.use((req, res, next) => {
     }
 });
 
+// To Display data in database
 route.get('/', (req, res) => {
 
     db.connect(function (error) {
         if (error) console.log(error);
+
 
         const sqldt = "select *  from data_setting where id=?";
 
@@ -33,6 +35,27 @@ route.get('/', (req, res) => {
 
     });
 
+});
+// TO update data in Database
+route.post('/up_rec', (req, res) => {
+    console.log('Received update request:', req.body);
+    console.log('I am working');
+    let namez = req.body.name;
+    let email = req.body.email;
+    let password = req.body.password;
+    let number = req.body.number;
+    let id = req.body.id;
+
+    const sqldt = "UPDATE   data_setting set name=?, E_mail=?, password=?, number=? where id=?";
+
+    db.query(sqldt, [namez, email, password, number, id], function (error, result) {
+        if (error) console.log("error is here", error);
+        // res.redirect('/record')
+
+    });
+
+
+    res.json({ message: 'Update successful' }); // Respond with a JSON message
 });
 
 module.exports = route

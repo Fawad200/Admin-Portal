@@ -19,20 +19,13 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     const { name, email, password, number } = req.body;
 
+    const sql = "INSERT INTO data_setting (name, E_mail, password, number) VALUES (?, ?, ?, ?)";
+    const values = [name, email, password, number];
 
-    const sql = "INSERT INTO data_setting(name ,E_mail,password,number) VALUES ?";
-    const data = [
-        [
-            name,
-            email,
-            password,
-            number
-        ]
-    ];
-    db.query(sql, [data], function (err, results) {
+    db.query(sql, values, function (err, results) {
         if (err) {
-            console.log("Error");
-            res.status(500);
+            console.error("Error:", err);
+            res.status(500).json({ value: false, error: err.message });
         } else {
             console.log("Data is Stored");
             res.json({ value: true });
