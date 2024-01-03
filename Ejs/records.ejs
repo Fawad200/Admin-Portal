@@ -29,6 +29,7 @@
             <th>E-Mail</th>
             <th>Password</th>
             <th>Number</th>
+            <th>Operations</th>
         </tr>
         <% if(db_data.length>0){ %>
             <% for(let i=0 ;i<db_data.length ;i++){%>
@@ -39,13 +40,13 @@
                     <td><%- db_data[i].E_mail %></td>
                     <td><%- db_data[i].password %></td>
                     <td><%- db_data[i].number %></td>
-                    <td>
+
                     <td>
                         <a class="del" href="#" onclick="confirmAndDelete('<%- db_data[i].id %>')">Delete</a>
                         <a href="/update?id=<%- db_data[i].id%>">Update </a>
                     </td>
 
-                    </td>
+
 
                 </tr>
 
