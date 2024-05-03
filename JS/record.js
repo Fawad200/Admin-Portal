@@ -9,9 +9,10 @@ router.use((req, res, next) => {
     console.log('Auth Middleware:', req.session.isAuthenticated);
     if (req.session.isAuthenticated) {
         next(); // User is authenticated, proceed to the next middleware or route handler
-    } else {
-        console.log('Redirecting to login...');
-        res.redirect('/login'); // Redirect to the login page if not authenticated
+    } else if (!req.session.isAuthenticated) {
+
+        console.log('session is false')
+        res.redirect('/login')
     }
 });
 // Logout route

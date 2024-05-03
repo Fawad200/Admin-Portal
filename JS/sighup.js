@@ -18,9 +18,9 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     const { name, email, password, number } = req.body;
-
+    const usertype = "user";
     const sql = "INSERT INTO data_setting (name, E_mail, password, number) VALUES (?, ?, ?, ?)";
-    const values = [name, email, password, number];
+    const values = [name, email, password, number, usertype];
 
     db.query(sql, values, function (err, results) {
         if (err) {

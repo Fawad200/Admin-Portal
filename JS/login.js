@@ -18,21 +18,27 @@ router.post('/', (req, res) => {
     const { username, password } = req.body;
 
 
-    db.query(` SELECT name,password FROM data_setting WHERE   name = '${username}' AND password = '${password}'`, (err, results) => {
+    db.query(`SELECT name, password, etype FROM data_setting WHERE name = '${username}' AND password = '${password}'`, (err, results) => {
         if (err) {
             console.error('Error executing query:', err);
             res.status(500).send('Internal Server Error');
             return;
         }
-
         if (results.length > 0) {
-            req.session.isAuthenticated = true;
-            // res.redirect('/record');
-            res.send('Welcome to the dashboard!');
+            const userType = results[0].etype;
+            if (userType === 'user') {
+                res.send('Zser');
+            } else if (userType === 'admin') {
+                req.session.isAuthenticated = true;
+                res.send('Welcome to the dashboard!');
+            }
         } else {
             res.status(401).send('Invalid username or password');
         }
+
     });
+
+
 
 
 });

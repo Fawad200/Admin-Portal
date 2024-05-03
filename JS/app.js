@@ -10,7 +10,7 @@ const session = require('express-session');
 
 const loginRouter = require('./login');
 const welcomeRouter = require('./welcome');
-const dashbords = require('./dashbord');
+const user = require('./user');
 const signup = require("./sighup");
 const record = require("./record");
 const rec_up = require('./rec_update');
@@ -33,7 +33,7 @@ app.use('/', welcomeRouter);
 
 app.use('/login', loginRouter);
 
-app.use('/dashbord', dashbords);
+app.use('/user', user);
 
 app.use('/signup', signup);
 
